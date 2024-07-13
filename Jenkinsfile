@@ -6,7 +6,7 @@ pipeline {
     }
     environment {
         APP_NAME = "wotion-app"
-        RELEASE = "prod"
+        RELEASE = "dev"
         DOCKER_USER = "capybara22"
         DOCKER_PASS = 'dockerhub'
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Checkout from Git') {
             steps {
-                git branch: 'prod', url: 'https://github.com/Kakada10/wotion-app'
+                git branch: 'dev', url: 'https://github.com/Kakada10/wotion-app'
             }
         }
         stage('Install Dependencies') {
