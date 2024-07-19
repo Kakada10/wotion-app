@@ -12,7 +12,7 @@ pipeline {
         DOCKER_PASS = 'dockerhub'
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_TAG = "${ENVIRONMENT}-${BUILD_NUMBER}"
-	      JENKINS_API_TOKEN = credentials("JENKINS_API_TOKEN")
+	JENKINS_API_TOKEN = credentials("JENKINS_API_TOKEN")
     }
     stages {
         stage('clean workspace') {
@@ -78,7 +78,7 @@ pipeline {
                  }
              }
         } 
-	      stage("Trigger CD Pipeline") {
+	stage("Trigger CD Pipeline") {
             steps {
                 script {
                     sh "curl -v -k --user admin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'ec2-13-212-101-35.ap-southeast-1.compute.amazonaws.com:8080/job/Wotion-App-CD/buildWithParameters?token=gitops-token'"
