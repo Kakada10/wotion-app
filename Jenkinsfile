@@ -81,20 +81,10 @@ pipeline {
 	stage("Trigger CD Pipeline") {
             steps {
                 script {
-                    sh "curl -v -k --user admin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'ec2-13-212-101-35.ap-southeast-1.compute.amazonaws.com:8080/job/Wotion-App-CD/buildWithParameters?token=gitops-token'"
+                    sh "curl -v -k --user admin:${JENKINS_API_TOKEN} -X POST -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'ec2-18-143-92-106.ap-southeast-1.compute.amazonaws.com:8080/job/Wotion-App-CD/buildWithParameters?token=gitops-token'"
                 }
             }
         }
     }
-    post {
-        always {
-           emailext attachLog: true,
-               subject: "'${currentBuild.result}'",
-               body: "Project: ${env.JOB_NAME}<br/>" +
-                   "Build Number: ${env.BUILD_NUMBER}<br/>" +
-                   "URL: ${env.BUILD_URL}<br/>",
-               to: 'themiracleboy31@gmail.com',                              
-               attachmentsPattern: 'trivyfs.txt,trivyimage.txt'
-        }
-     }		
+  
 }
