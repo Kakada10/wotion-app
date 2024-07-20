@@ -16,7 +16,7 @@ export default function HeroLanding() {
         as={Box}
         textAlign={"center"}
         spacing={{ base: 8, md: 14 }}
-        py={{ base: 20, md: 35 }}
+        py={{ base: 20, md: 36 }}
         mb={50}
       >
         <Heading
