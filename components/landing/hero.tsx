@@ -37,7 +37,7 @@ export default function HeroLanding() {
             SUPERCHARGE
           </Text>
           <br />
-          Your Notion Docs for DEV v3
+          Your Notion Docs for DEV v4
         </Heading>
         <Text color={"gray.500"} fontSize={"xl"}>
           Welcome to Wotion: a library of dynamic widgets for Notion.
